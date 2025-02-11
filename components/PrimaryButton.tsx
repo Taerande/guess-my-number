@@ -2,7 +2,7 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 import React from "react";
 
 interface PrimaryButtonProps {
-  children?: never;
+  children: string | React.ReactNode;
   onPress?: () => void;
 }
 
