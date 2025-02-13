@@ -43,10 +43,14 @@ const StarGameScreen = ({ onConfirmNumber }: props) => {
       />
       <View style={styles.buttonContainer}>
         <View style={styles.button}>
-          <PrimaryButton onPress={resetInputHandler}>Rest</PrimaryButton>
+          <PrimaryButton onPress={resetInputHandler}>
+            <Text>Reset</Text>
+          </PrimaryButton>
         </View>
         <View style={styles.button}>
-          <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+          <PrimaryButton onPress={confirmInputHandler}>
+            <Text>Confirm</Text>
+          </PrimaryButton>
         </View>
       </View>
     </View>
