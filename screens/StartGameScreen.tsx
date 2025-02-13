@@ -1,6 +1,7 @@
 import { View, Text, TextInput, Button, StyleSheet, Alert } from "react-native";
 import React from "react";
 import PrimaryButton from "./../components/PrimaryButton";
+import Colors from "../constants/colors";
 
 interface props {
   onConfirmNumber: (selectedNumber: number) => void;
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
     borderRadius: 8,
     padding: 16,
-    backgroundColor: "#72063c",
+    backgroundColor: Colors.primary800,
     // android only style
     elevation: 8,
     // ios only style
@@ -79,9 +80,9 @@ const styles = StyleSheet.create({
     height: 64,
     width: 50,
     fontSize: 32,
-    borderBottomColor: "#ddb52f",
+    borderBottomColor: Colors.accent500,
     borderBottomWidth: 2,
-    color: "#ddb52f",
+    color: Colors.accent500,
     textAlign: "center",
   },
   buttonContainer: {
