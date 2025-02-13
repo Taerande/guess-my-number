@@ -4,7 +4,7 @@ import React from "react";
 const GameScreen = () => {
   return (
     <View>
-      <Text>GameScreen</Text>
+      <Text>Game Screen!</Text>
     </View>
   );
 };
