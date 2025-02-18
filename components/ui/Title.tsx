@@ -21,10 +21,10 @@ const styles = StyleSheet.create({
     marginTop: 30,
     padding: 12,
     fontSize: 24,
-    color: Colors.accent500,
+    color: "white",
     fontWeight: "bold",
     textAlign: "center",
     borderWidth: 2,
-    borderColor: Colors.accent500,
+    borderColor: "white",
   },
 });

@@ -20,13 +20,14 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: Colors.accent500,
     padding: 10,
-    borderRadius: 10,
-    marginVertical: 10,
+    borderRadius: 8,
+    margin: 24,
     alignItems: "center",
     justifyContent: "center",
   },
   number: {
     color: Colors.accent500,
-    fontSize: 22,
+    fontSize: 36,
+    fontWeight: "bold",
   },
 });
