@@ -2,6 +2,8 @@ import { View, Text, TextInput, Button, StyleSheet, Alert } from "react-native";
 import React from "react";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Colors from "../constants/colors";
+import Title from "../components/ui/Title";
+import Card from "./../components/ui/Card";
 
 interface props {
   onConfirmNumber: (selectedNumber: number) => void;
@@ -34,26 +36,30 @@ const StarGameScreen = ({ onConfirmNumber }: props) => {
   };
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.numberInput}
-        maxLength={2}
-        keyboardType="number-pad"
-        onChangeText={numberInputHandler}
-        value={enteredNumber}
-      />
-      <View style={styles.buttonContainer}>
-        <View style={styles.button}>
-          <PrimaryButton onPress={resetInputHandler}>
-            <Text>Reset</Text>
-          </PrimaryButton>
+    <View style={styles.rootContainer}>
+      <Title>Guess My Number</Title>
+      <Card>
+        <Text style={styles.instructionText}>Enter a number</Text>
+        <TextInput
+          style={styles.numberInput}
+          maxLength={2}
+          keyboardType="number-pad"
+          onChangeText={numberInputHandler}
+          value={enteredNumber}
+        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <PrimaryButton onPress={resetInputHandler}>
+              <Text>Reset</Text>
+            </PrimaryButton>
+          </View>
+          <View style={styles.button}>
+            <PrimaryButton onPress={confirmInputHandler}>
+              <Text>Confirm</Text>
+            </PrimaryButton>
+          </View>
         </View>
-        <View style={styles.button}>
-          <PrimaryButton onPress={confirmInputHandler}>
-            <Text>Confirm</Text>
-          </PrimaryButton>
-        </View>
-      </View>
+      </Card>
     </View>
   );
 };
@@ -61,20 +67,14 @@ const StarGameScreen = ({ onConfirmNumber }: props) => {
 export default StarGameScreen;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    alignItems: "center",
+  rootContainer: {
+    flex: 1,
     marginTop: 100,
-    marginHorizontal: 24,
-    borderRadius: 8,
-    padding: 16,
-    backgroundColor: Colors.primary800,
-    // android only style
-    elevation: 8,
-    // ios only style
-    shadowColor: "black",
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    shadowOpacity: 0.26,
+    alignItems: "center",
+  },
+  instructionText: {
+    color: Colors.accent500,
+    fontSize: 24,
   },
   numberInput: {
     height: 64,
