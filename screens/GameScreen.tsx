@@ -1,8 +1,11 @@
 import { View, Text, StyleSheet, Alert } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import Title from "../components/ui/Title";
 import NumberContainer from "./../components/game/NumberContainer";
 import PrimaryButton from "./../components/ui/PrimaryButton";
+import Card from "./../components/ui/Card";
+import Colors from "../constants/colors";
 
 interface props {
   userNumber: number;
@@ -64,17 +67,21 @@ const GameScreen = ({ userNumber, onGameOver }: props) => {
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
       <NumberContainer>{curGuess}</NumberContainer>
-      <View>
-        <Text>High or Lower ?</Text>
+      <Card>
+        <Text style={styles.captionText}>High or Lower ?</Text>
         <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={() => nextGuessHandler("lower")}>
-            -
-          </PrimaryButton>
-          <PrimaryButton onPress={() => nextGuessHandler("greater")}>
-            +
-          </PrimaryButton>
+          <View style={styles.button}>
+            <PrimaryButton onPress={() => nextGuessHandler("lower")}>
+              <Ionicons name="remove" size={24} color="white" />
+            </PrimaryButton>
+          </View>
+          <View style={styles.button}>
+            <PrimaryButton onPress={() => nextGuessHandler("greater")}>
+              <Ionicons name="add" size={24} color="white" />
+            </PrimaryButton>
+          </View>
         </View>
-      </View>
+      </Card>
       <View>
         {/* Opponent's Guess */}
         <Text>Log Rounds</Text>
@@ -90,9 +97,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttonContainer: {
-    flexDirection: "column",
-    justifyContent: "space-around",
-    alignContent: "center",
+    flexDirection: "row",
+    columnGap: 10,
     marginTop: 20,
+  },
+  button: {
+    width: "40%",
+    fontSize: 24,
+    color: Colors.accent500,
+  },
+  captionText: {
+    color: Colors.accent500,
+    fontSize: 24,
   },
 });
