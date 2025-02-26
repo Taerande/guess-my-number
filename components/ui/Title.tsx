@@ -7,11 +7,7 @@ interface Props {
 }
 
 const Title: React.FC<Props> = ({ children, ...rest }) => {
-  return (
-    <View>
-      <Text style={styles.title}>{children}</Text>
-    </View>
-  );
+  return <Text style={styles.title}>{children}</Text>;
 };
 
 export default Title;
@@ -26,5 +22,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     borderWidth: 2,
     borderColor: "white",
+    maxWidth: "80%",
   },
 });
