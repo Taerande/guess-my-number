@@ -7,6 +7,8 @@ import {
   Alert,
   Dimensions,
   useWindowDimensions,
+  KeyboardAvoidingView,
+  ScrollView,
 } from "react-native";
 import React from "react";
 import PrimaryButton from "../components/ui/PrimaryButton";
@@ -49,37 +51,44 @@ const StarGameScreen = ({ onConfirmNumber }: props) => {
   const marginTop = height < 400 ? 30 : 100;
 
   return (
-    <View style={[styles.rootContainer, { marginTop }]}>
-      <Title>Guess My Number</Title>
-      <Card>
-        <Text style={styles.instructionText}>Enter a number</Text>
-        <TextInput
-          style={styles.numberInput}
-          maxLength={2}
-          keyboardType="number-pad"
-          onChangeText={numberInputHandler}
-          value={enteredNumber}
-        />
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <PrimaryButton onPress={resetInputHandler}>
-              <Text>Reset</Text>
-            </PrimaryButton>
-          </View>
-          <View style={styles.button}>
-            <PrimaryButton onPress={confirmInputHandler}>
-              <Text>Confirm</Text>
-            </PrimaryButton>
-          </View>
+    <ScrollView style={styles.screen}>
+      <KeyboardAvoidingView style={styles.screen} behavior="position">
+        <View style={[styles.rootContainer, { marginTop }]}>
+          <Title>Guess My Number</Title>
+          <Card>
+            <Text style={styles.instructionText}>Enter a number</Text>
+            <TextInput
+              style={styles.numberInput}
+              maxLength={2}
+              keyboardType="number-pad"
+              onChangeText={numberInputHandler}
+              value={enteredNumber}
+            />
+            <View style={styles.buttonContainer}>
+              <View style={styles.button}>
+                <PrimaryButton onPress={resetInputHandler}>
+                  <Text>Reset</Text>
+                </PrimaryButton>
+              </View>
+              <View style={styles.button}>
+                <PrimaryButton onPress={confirmInputHandler}>
+                  <Text>Confirm</Text>
+                </PrimaryButton>
+              </View>
+            </View>
+          </Card>
         </View>
-      </Card>
-    </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
 export default StarGameScreen;
 
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
   rootContainer: {
     flex: 1,
     alignItems: "center",
