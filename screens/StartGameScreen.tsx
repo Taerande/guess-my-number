@@ -1,4 +1,13 @@
-import { View, Text, TextInput, Button, StyleSheet, Alert } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  Alert,
+  Dimensions,
+  useWindowDimensions,
+} from "react-native";
 import React from "react";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Colors from "../constants/colors";
@@ -11,6 +20,8 @@ interface props {
 
 const StarGameScreen = ({ onConfirmNumber }: props) => {
   const [enteredNumber, setEnteredNumber] = React.useState("");
+
+  const { width, height } = useWindowDimensions();
 
   const numberInputHandler = (inputText: string) => {
     setEnteredNumber(inputText);
@@ -35,8 +46,10 @@ const StarGameScreen = ({ onConfirmNumber }: props) => {
     onConfirmNumber(chosenNumber);
   };
 
+  const marginTop = height < 400 ? 30 : 100;
+
   return (
-    <View style={styles.rootContainer}>
+    <View style={[styles.rootContainer, { marginTop }]}>
       <Title>Guess My Number</Title>
       <Card>
         <Text style={styles.instructionText}>Enter a number</Text>
@@ -69,7 +82,6 @@ export default StarGameScreen;
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    marginTop: 100,
     alignItems: "center",
   },
   instructionText: {
